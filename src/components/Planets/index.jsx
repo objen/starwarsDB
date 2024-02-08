@@ -20,11 +20,8 @@ function Planets() {
 
     function getPlanets() {
         fetch(pageNow)
-            .then(function (response) {
-                return response.json()          
-            })
-            .then (function (data) {
-                console.log(data)
+            .then(res => res.json())
+            .then (data => {
                 setPlanets(data.results)
                 setNext(data.next)
                 setPrev(data.previous) 
@@ -41,9 +38,7 @@ function Planets() {
         
         {nextAPI != null && <button onClick={forward}>Next Page</button>}
 
-        {planets.map(function(planet) {
-            return <PlanetCard key={planet.name} name={planet.name} />
-        })}
+        {planets.map(planet => <PlanetCard key={planet.name} name={planet.name} />)}
        
         </>
     )

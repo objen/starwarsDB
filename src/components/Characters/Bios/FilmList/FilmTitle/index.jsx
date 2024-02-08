@@ -8,10 +8,8 @@ function FilmTitle({url}) {
 
     function getFilmName() {
         fetch(url)
-        .then(function (response) {
-            return response.json()          
-        })
-        .then (function (data) {
+        .then(res => res.json())          
+        .then (data => {
             setFilmName(data.title)
         })      
     }

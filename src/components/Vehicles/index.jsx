@@ -20,11 +20,8 @@ function Vehicles() {
 
     function getVehicles() {
         fetch(pageNow)
-        .then(function (response) {
-            return response.json()
-        })
-        .then (function (data) {
-            console.log(data)
+        .then(res => res.json())
+        .then (data => {
             setVehicles(data.results)
             setNext(data.next)
             setPrev(data.previous) 
@@ -41,12 +38,9 @@ function Vehicles() {
         
         {nextAPI != null && <button onClick={forward}>Next Page</button>}
 
-        {vehicles.map(function(vehicle) {
-            return <VehicleCard key={vehicle.name}
-            name={vehicle.name} />
-        })}
+        {vehicles.map(vehicle => <VehicleCard key={vehicle.name} name={vehicle.name} />)}
+        
         </>
     )
 }
-
 export default Vehicles

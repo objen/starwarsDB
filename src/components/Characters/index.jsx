@@ -20,11 +20,8 @@ function Characters() {
 
     function getCharacterData() {
         fetch(pageNow)
-            .then(function (response) {
-                return response.json()          
-            })
-            .then (function (data) {
-                console.log(data)
+            .then(res => res.json())
+            .then (data => {
                 setCharacters(data.results)
                 setNext(data.next)
                 setPrev(data.previous) 
@@ -41,9 +38,7 @@ function Characters() {
         
         {nextAPI != null && <button onClick={forward}>Next Page</button>}
 
-        {characters.map(function(character) {
-            return <Bios key={character.name} name={character.name} birth={character.birth_year} homeplanet={character.homeworld} films={character.films}/>
-        })}
+        {characters.map(character => <Bios key={character.name} name={character.name} birth={character.birth_year} homeplanet={character.homeworld} films={character.films}/>)}
 
         </>
     )

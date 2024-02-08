@@ -8,10 +8,8 @@ function Bios({name, birth, homeplanet, films}) {
 
     function getHomeplanet() {
         fetch(homeplanet)
-        .then(function (response) {
-            return response.json()          
-        })
-        .then (function (data) {
+        .then(res => res.json())
+        .then (data => {
             setPlanetName(data.name)
         })      
     }
